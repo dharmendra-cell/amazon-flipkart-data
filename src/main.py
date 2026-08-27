@@ -58,7 +58,7 @@ try:
     }
     
     # Get inventory summaries
-    api_url = "https://sellingpartnerapi-na.amazon.com/inventory/v1/inventorySummaries"
+    api_url = "https://sellingpartnerapi-eu.amazon.com/inventory/v1/inventorySummaries"
     params = {
         'details': 'true',
         'granularityType': 'SKU'
