@@ -29,4 +29,5 @@ jobs:
           AMAZON_CLIENT_SECRET: ${{ secrets.AMAZON_CLIENT_SECRET }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SHEET_NAME: marketplace-inventory-dashboard
+          GOOGLE_SHEET_ID: 1qjwPk2MOGhtbAKM4g-4HwHNWpSWh3Qyp6vOeccAJVq0
         run: python src/main.py
