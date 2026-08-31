@@ -139,7 +139,13 @@ try:
             inbound = details.get('inboundWorkingQuantity', 0) + \
                 details.get('inboundShippedQuantity', 0) + \
                 details.get('inboundReceivingQuantity', 0)
-            total_stock = item.get('totalQuantity', fulfillable + inbound)
+            reserved = details.get('reservedQuantity', {}).get('totalReservedQuantity', 0)
+            # NOTE: item.get('totalQuantity', fulfillable + inbound) looked like a
+            # safe fallback but dict.get() only falls back when the key is MISSING,
+            # not when it's present-but-zero. Amazon's response often includes
+            # "totalQuantity": 0 even when fulfillable/inbound are non-zero, which
+            # silently discarded real stock numbers. Compute directly instead.
+            total_stock = fulfillable + inbound + reserved
 
             row = [
                 'Amazon',                                          # MARKETPLACE
